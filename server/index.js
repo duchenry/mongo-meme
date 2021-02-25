@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
 import post from "./routes/post.js";
-
+import userRoutes from "./routes/users.js";
 const app = express();
 dotenv.config();
 
@@ -12,7 +12,7 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 app.use("/posts", post);
-
+app.use("/user", userRoutes);
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
